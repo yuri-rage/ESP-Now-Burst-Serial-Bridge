@@ -14,13 +14,21 @@ When uploading the sketch, be sure to define `BOARD1` or `BOARD2` as appropriate
 
 -- Yuri - Sep 2021
 
+# Broadcast Mode (one-to-many)
+
+The "broadcast-mode" branch includes a modification that allows the broadcast of ESP-Now messages from one board to any number of others on the same channel. Simply edit the sketch so that `SENDER_MAC` is the address of the board that will be broadcasting. Leave `RECEIVER_MAC` as an array containing all `0xFF` values (to indicate broadcast mode). You can upload that sketch to all boards on the network. Each receiver will only accept messages from the sender MAC address as a means of weak security.
+
+-- Updated Jan 2023
+
+# References
+
 Blog post here: https://discuss.ardupilot.org/t/simple-esp-telemetry-serial-bridges/75536
 
 Based this example: https://randomnerdtutorials.com/esp-now-two-way-communication-esp32/
 
 For a similar bridge using LoRa, see: https://github.com/ktrussell/Serial_to_LoRa
 
-### License
+# License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files.
 
