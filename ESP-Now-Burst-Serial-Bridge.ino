@@ -104,8 +104,6 @@ uint16_t recv_buf_size = 0;
 uint32_t send_timeout = 0;
 uint32_t recv_timeout = 0;
 
-esp_now_peer_info_t peerInfo;  // scope workaround for arduino-esp32 v2.0.1
-
 #if defined(DEBUG) || defined(BLINK_ON_SEND_SUCCESS)
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
   #ifdef DEBUG
@@ -194,7 +192,7 @@ void setup() {
   esp_now_register_send_cb(OnDataSent);
   #endif
   
-  //esp_now_peer_info_t peerInfo;  // scope workaround for arduino-esp32 v2.0.1
+  esp_now_peer_info_t peerInfo;
   memcpy(peerInfo.peer_addr, broadcastAddress, 6);
   peerInfo.channel = WIFI_CHAN;  
   peerInfo.encrypt = false;
